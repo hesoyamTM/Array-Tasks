@@ -66,4 +66,10 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    
+    <!--ProgramInfo-->
+    <Style x:Key="FlowDocumentStyle" TargetType="FlowDocument">
+        <Setter Property="FontFamily" Value="Fonts/static/Manrope-Light.ttf #Manrope"/>
+        <Setter Property="Foreground" Value="#fdffa3"/>
+    </Style>
 </ResourceDictionary>

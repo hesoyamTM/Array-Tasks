@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,18 +33,11 @@ namespace Array_Tasks
         private void ExitButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.Close();
         private void ToolBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
-        public string info
+        //Метод для перехода по ссылке
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            //Брать данные будем из текстового файла в ресурсах
-            get
-            {
-                //Обращаемся с ресурсам и берём наш текстовый файл с информацией
-                StreamResourceInfo resourceInfo = Application.GetResourceStream(new Uri(@"Source\ProgramInfo.txt", UriKind.Relative));
-
-                //Создаём StreamReader и указываем поток из информации о ресурсе. Указываем кодировку
-                using (StreamReader streamReader = new StreamReader(resourceInfo.Stream, Encoding.Default))
-                    return streamReader.ReadToEnd();//Просто читаем до конца
-            }
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }
